@@ -1,17 +1,23 @@
 import React from 'react';
 import './App.css';
+import Login from './components/Login'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+
+
 
 function App() {
   return (
-    <div className="App">
-      what up
-
-    </div>
+    <Router>
+      <div className="App">
+        <Route exact path="/" component={Login} />
+        <Route exact path="/dashboard" component={Dashboard} />
+      </div>
+    </Router>
   );
 }
 
 export default App;
 
 
-// color ideas Hex: 9F4298 / CFDB31 / D1AFD3 / E6E7E8
 
