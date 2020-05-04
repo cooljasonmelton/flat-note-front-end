@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Segment, Button, Form } from 'semantic-ui-react'
+import { Menu, Segment, Button, Form, Input } from 'semantic-ui-react'
 
  
 
@@ -14,11 +14,16 @@ const Login = () => {
             </Menu>
         </Segment>
         <Form className="login-form">
-            <Form.Field>
-                <label><h1>Login:</h1></label>
-                <input placeholder='Username' />
-            </Form.Field>
-          <Button type='submit'> Submit</Button>
+            <Form.Group className="login-form-stuff">
+                <Form.Input
+                placeholder='username'
+                name='username'
+                value={null}
+                onChange={null}
+                />
+                <Form.Button className="form-button" content='login' />
+
+            </Form.Group>
         </Form>
       </div>
     );
