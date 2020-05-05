@@ -18,11 +18,24 @@ class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        // fetch('')
-        // .then(r=>r.jsoin())
-        // .then(data=>console.log(data))
+        const reqObj = {
+            method: "POST",
+            headers: {      
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user: this.state.username})
+        }
 
-        this.props.loginUsername(this.state)
+        fetch('http://localhost:3000/users', reqObj)
+        .then(r=>r.json())
+        .then(user=> {
+            this.props.loginUsername({
+                id: user.id,
+                username: user.name,
+                notes: user.notes
+            })
+        })
+
 
     }
 

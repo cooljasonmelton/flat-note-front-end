@@ -7,7 +7,10 @@ import manageLogin from './reducers/manageLogin'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
  
-let store = createStore(manageLogin);
+let store = createStore(
+  manageLogin, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <React.StrictMode>

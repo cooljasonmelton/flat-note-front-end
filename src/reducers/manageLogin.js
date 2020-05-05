@@ -3,7 +3,11 @@ export default function manageLogin(state = {
     }, action) {
     switch (action.type) {
         case 'LOGIN_USERNAME':
-            return { username: action.payload.username };
+            return { 
+                id: action.payload.id,
+                username: action.payload.username,
+                notes: action.payload.notes
+            };
         case 'LOGOUT_USERNAME':
             return {username: ""}
         default:
