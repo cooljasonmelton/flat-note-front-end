@@ -1,20 +1,3 @@
-// import React, { Component } from 'react'
-// import { } from 'semantic-ui-react'
-
-// // export default class NoteContainer extends Component {
-
-
-//   render() {
-//     return <div>
-//       <Note/>
-//       <Note/>
-//       <Note/>
-//     </div> 
-
-//   }
-// }
-
-
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import Note from './Note'
@@ -28,7 +11,6 @@ export default class MenuExampleSubMenu extends Component {
 
   render() {
     const { activeItem } = this.state
-    console.log(this.state)
 
     return (
       <Menu vertical>
