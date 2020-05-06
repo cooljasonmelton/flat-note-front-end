@@ -51,7 +51,7 @@ class Login extends Component {
                 />
                 </Menu>
             </Segment>
-            <Form className="login-form" onSubmit={ e => this.handleSubmit(e) }>
+            <Form className="flat-note-div login" onSubmit={ e => this.handleSubmit(e) }>
                 <Form.Group className="login-form-stuff">
                     <Form.Input
                     placeholder='username'

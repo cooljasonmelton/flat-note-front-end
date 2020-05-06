@@ -1,12 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Menu } from 'semantic-ui-react'
 import Note from './Note'
 import { connect } from 'react-redux';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
+import NoteDisplay from './NoteDisplay';
 
 
 class NoteContainer extends Component {
-  state = {}
+  constructor(){
+    super()
+    this.state = {
+      activeItem: ""
+    }
+
+  }
   
   renderNotes = () => {
     if (!!this.props.state.notes){
@@ -17,29 +31,45 @@ class NoteContainer extends Component {
         />
       })
     } else {
-      return <div></div>
+      return <div>LOADING...</div>
     }
   }
 
  
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    if (name === this.state.activeItem){
+      return this.setState({activeItem: ""})
+    }
+    return this.setState({ activeItem: name })
+  }
+
+  displayNote = () => {   
+    if (this.state.activeItem !== ""){
+      return this.props.state.notes.map(note => {
+        if (note.id === this.state.activeItem){
+          return <NoteDisplay note={note} />
+        }
+      })
+    }
+  }
 
   render() {
-    const { activeItem } = this.state
-
     return (
-      <Menu vertical>            
-        <Menu.Item>
-          NOTES:
-        </Menu.Item>
-        
-        {/* <Menu.Item>
-          <Input placeholder='Search...' />
-        </Menu.Item> */}
-
-        {this.renderNotes()}
-
-      </Menu>
+      <div className="note-container">
+        <Menu vertical style={{overflow: 'auto', height: '500px', maxHeight: '500px' }}>            
+          <Menu.Item style={{backgroundColor: "#000000", color: "white"}}>
+            NOTES:
+          </Menu.Item>
+  
+          {/* <Menu.Item>
+            <Input placeholder='Search...' />
+          </Menu.Item> */}
+  
+          {this.renderNotes()}
+  
+        </Menu>
+        {this.displayNote()}
+      </div>
     )
   }
 }

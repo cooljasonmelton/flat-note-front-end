@@ -6,7 +6,7 @@ import { Input, TextArea, Button, Form } from 'semantic-ui-react'
 const NoteForm = () => {
     return (
       <div>  
-        <Form className="login-form">
+        <Form className="flat-note-div">
             <Form.Field
             id='form-input-control-last-name'
             control={Input}

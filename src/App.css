@@ -2,16 +2,45 @@ body {
     text-align: center;
     background-color: #a8dcf3;
 }
-.login-form {
+
+
+.note-container{
+    display: flex;
+}
+
+.note-display {
+    margin: 5% auto auto 19%;
+
+}
+.note-display-name{
+    margin: 10px 40px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border-style: solid;
+}
+
+.note-display-text{
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border-style: solid ;
+    margin-bottom: 10px;
+}
+
+.flat-note-div {
     margin-left: auto;
     margin-right: auto;
     background-color: #f39da3;
     padding: 10px;
-    margin-top: 100px;
     border-radius: 20px;
     width: 35em;
     border-style: groove;
     border-color: #f39da3;
+}
+
+.login{
+    margin-top: 100px;
 }
 
 .login-form-stuff{
@@ -19,8 +48,7 @@ body {
     height: 5em;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
 .ui.button {

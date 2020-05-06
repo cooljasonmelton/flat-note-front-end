@@ -15,6 +15,8 @@ class Navbar extends Component {
     return this.props.logout();
   }
 
+
+
   render() {
     const { activeItem } = this.state
 
@@ -31,7 +33,7 @@ class Navbar extends Component {
             name={`Hello ${this.props.username}`}
           />
 
-          <Menu.Item header as={NavLink} exact to="/note/new" 
+          <Menu.Item header as={NavLink} to="/note/new" 
             name='new note'
             position='right'
             active={activeItem === 'new note'}
@@ -65,4 +67,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+
+
 
