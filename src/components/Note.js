@@ -4,16 +4,17 @@ import { Menu } from 'semantic-ui-react'
  
 
 const Note = (props) => {
+  console.log(props)
     return (
       <Menu.Item 
-      // active={activeItem === 'one'}
-      onClick={this.handleItemClick}
-      name="one"
+      active={props.activeItem === props.note.id}
+      onClick={props.handleItemClick}
+      name={props.note.id}
     >
-      NOTE 1
+      {props.note.name}
       <Menu.Menu>
         <Menu.Item>
-          Some of the text from note one ...
+          {props.note.text.substring(0, 40)}...
         </Menu.Item>
       </Menu.Menu>
     </Menu.Item>

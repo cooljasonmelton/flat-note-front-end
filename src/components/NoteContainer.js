@@ -9,10 +9,16 @@ class NoteContainer extends Component {
   state = {}
   
   renderNotes = () => {
-    console.log(this.props.state.notes)
-    // return this.props.state.notes.map(note =>
-    //   )
-
+    if (!!this.props.state.notes){
+      return this.props.state.notes.map(note =>{
+        return <Note note={note} 
+        handleItemClick={this.handleItemClick} 
+        activeItem={this.state.activeItem}
+        />
+      })
+    } else {
+      return <div></div>
+    }
   }
 
  
@@ -24,54 +30,15 @@ class NoteContainer extends Component {
     return (
       <Menu vertical>            
         <Menu.Item>
-          notes:
+          NOTES:
         </Menu.Item>
-
-
-
+        
         {/* <Menu.Item>
           <Input placeholder='Search...' />
         </Menu.Item> */}
 
-        <Menu.Item 
-          active={activeItem === 'one'}
-          onClick={this.handleItemClick}
-          name="one"
-        >
-          NOTE 1
-          <Menu.Menu>
-            <Menu.Item>
-              Some of the text from note one ...
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
-
         {this.renderNotes()}
 
-        <Menu.Item 
-          active={activeItem === 'two'}
-          onClick={this.handleItemClick}
-          name="two"
-        >
-          NOTE 2
-          <Menu.Menu>
-            <Menu.Item>
-              Some of the text from note two ...
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
-        <Menu.Item 
-          active={activeItem === 'three'}
-          onClick={this.handleItemClick}
-          name="three"
-        >
-          NOTE 3
-          <Menu.Menu>
-            <Menu.Item>
-              Some of the text from note three ...
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
       </Menu>
     )
   }
