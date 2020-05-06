@@ -2,15 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Menu } from 'semantic-ui-react'
 import Note from './Note'
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
 import NoteDisplay from './NoteDisplay';
+import { Link } from 'react-router-dom';
+
 
 
 class NoteContainer extends Component {
@@ -39,11 +33,12 @@ class NoteContainer extends Component {
   handleItemClick = (e, { name }) => {
     if (name === this.state.activeItem){
       return this.setState({activeItem: ""})
+
     }
     return this.setState({ activeItem: name })
   }
 
-  displayNote = () => {   
+  displayNote = () => {  
     if (this.state.activeItem !== ""){
       return this.props.state.notes.map(note => {
         if (note.id === this.state.activeItem){
@@ -55,6 +50,7 @@ class NoteContainer extends Component {
 
   render() {
     return (
+      //inverted notes menu
       <div className="note-container">
         <Menu vertical style={{overflow: 'auto', height: '500px', maxHeight: '500px' }}>            
           <Menu.Item style={{backgroundColor: "#000000", color: "white"}}>
@@ -64,16 +60,17 @@ class NoteContainer extends Component {
           {/* <Menu.Item>
             <Input placeholder='Search...' />
           </Menu.Item> */}
-  
+
           {this.renderNotes()}
-  
         </Menu>
+
         {this.displayNote()}
+
+        <Link to='/note'><button>NOTE</button></Link>
       </div>
     )
   }
 }
-
 
 const mapDispatchToProps = dispatch => {
   return {
