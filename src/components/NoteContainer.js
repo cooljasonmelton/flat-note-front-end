@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { Menu } from 'semantic-ui-react'
-import Note from './Note'
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Route, Link } from 'react-router-dom';
+import Note from './Note'
 import NoteDisplay from './NoteDisplay';
-import { Link } from 'react-router-dom';
-
+import BigNote from './BigNote'
 
 
 class NoteContainer extends Component {
@@ -13,7 +13,6 @@ class NoteContainer extends Component {
     this.state = {
       activeItem: ""
     }
-
   }
   
   renderNotes = () => {
@@ -29,7 +28,6 @@ class NoteContainer extends Component {
     }
   }
 
- 
   handleItemClick = (e, { name }) => {
     if (name === this.state.activeItem){
       return this.setState({activeItem: ""})
@@ -50,24 +48,18 @@ class NoteContainer extends Component {
 
   render() {
     return (
-      //inverted notes menu
-      <div className="note-container">
-        <Menu vertical style={{overflow: 'auto', height: '500px', maxHeight: '500px' }}>            
-          <Menu.Item style={{backgroundColor: "#000000", color: "white"}}>
-            NOTES:
-          </Menu.Item>
-  
-          {/* <Menu.Item>
-            <Input placeholder='Search...' />
-          </Menu.Item> */}
+      <Menu vertical style={{overflow: 'auto', height: '500px', maxHeight: '500px' }}>            
+        <Menu.Item style={{backgroundColor: "#000000", color: "white"}}>
+          NOTES:
+        </Menu.Item>
+        
+        {/* <Menu.Item>
+          <Input placeholder='Search...' />
+        </Menu.Item> */}
 
-          {this.renderNotes()}
-        </Menu>
+        {this.renderNotes()}
 
-        {this.displayNote()}
-
-        <Link to='/note'><button>NOTE</button></Link>
-      </div>
+      </Menu>
     )
   }
 }

@@ -1,12 +1,21 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react'
-
+import Dashboard from './Dashboard'
+import { Button } from 'semantic-ui-react';
+import { useParams  } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const BigNote = (props) => {
+    const bigNoteId = useParams().noteId    
+    if (props.state === undefined) {
+        return <div>note not found</div>
+    }
 
-    // const {id, name, text} = props.note
+    const noteData = props.state.filter(note => note.id === parseInt(bigNoteId))[0]
+
+    const {id, name, text} = noteData
     return (
-    <div id={`bignote${1}`} className="big-note">
+    <>
+    <div id={`bignote-${id}`} className="big-note">
 
       <div className="flat-note-div"> 
         <div className="edit-note">
@@ -14,10 +23,10 @@ const BigNote = (props) => {
         <Button size='mini'>DELETE</Button>
       </div>  
         <div className="note-display-name">
-            <h1>{"name"}</h1>
+            <h1>{name}</h1>
         </div>
         <div className="note-display-text">
-            <p>{"text"}</p>
+            <p>{text}</p>
         </div>
         <div className="note-tags">
             <Button size='mini'>#tags</Button>
@@ -26,7 +35,14 @@ const BigNote = (props) => {
         </div>
       </div>
     </div>
+    </>
     );
 };
 
-export default BigNote
+const mapStateToProps = state => {
+    return {
+      state: state.notes
+    }
+  }
+  
+export default connect(mapStateToProps)(BigNote);

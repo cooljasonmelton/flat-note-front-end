@@ -9,6 +9,7 @@ export default class Dashboard extends Component {
     return <>
       <Navbar/>
       <NoteContainer/>
+
     </> 
   }
 }
