@@ -26,8 +26,9 @@ class Navbar extends Component {
             name="flat note"
           />
 
-          <Menu.Item className="title"
-            name={`welcome ${this.props.username}`}
+
+          <Menu.Item style={{   position: "absolute", left: "50%",  marginLeft: "-75px"}} className="title"
+            name={`Hello ${this.props.username}`}
           />
 
           <Menu.Item header as={NavLink} exact to="/note/new" 
