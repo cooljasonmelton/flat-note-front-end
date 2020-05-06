@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Redirect, useParams } from "react-router-dom";
 import Note from './Note'
 import BigNote from './BigNote'
 import Navbar from './Navbar'
 
 class BigNoteContainer extends Component {
   
-  state = { activeItem: this.props.match.params.noteId }
+  state = { 
+    activeItem: 2, 
+    redirect: false
+  }
  
   renderNotes = () => {
     if (!!this.props.state.notes){
@@ -23,11 +27,20 @@ class BigNoteContainer extends Component {
   }
 
   handleItemClick = (e, { name }) => {
-    return this.setState({ activeItem: name })
+    if (name === this.state.activeItem){
+        this.setState({redirect: true});
+    }
+    this.setState({ activeItem: name })
+  }
+
+  setActiveItem = id => {
+    this.setState({ activeItem: id })
   }
 
   render() {
-      console.log(this.props)
+    if (this.state.redirect) {
+        return <Redirect push to="/dashboard" />;
+    }
     return (
     <>
       <Navbar/>
@@ -44,7 +57,7 @@ class BigNoteContainer extends Component {
             {this.renderNotes()}
 
         </Menu>
-        <BigNote/>
+        <BigNote setActiveItem={this.setActiveItem}/>
       </div>
     </>
     )
@@ -64,3 +77,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BigNoteContainer);
+

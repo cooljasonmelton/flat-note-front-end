@@ -1,18 +1,22 @@
 import React from 'react';
-import Dashboard from './Dashboard'
 import { Button } from 'semantic-ui-react';
 import { useParams  } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const BigNote = (props) => {
-    const bigNoteId = useParams().noteId    
+
+    const bigNoteId = useParams().noteId 
+
     if (props.state === undefined) {
         return <div>note not found</div>
     }
 
+    props.setActiveItem(parseInt(bigNoteId))
+
     const noteData = props.state.filter(note => note.id === parseInt(bigNoteId))[0]
 
     const {id, name, text} = noteData
+
     return (
     <>
     <div id={`bignote-${id}`} className="big-note">
