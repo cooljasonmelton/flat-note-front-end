@@ -15,6 +15,22 @@ class EditForm extends React.Component{
         tags: ""
       }
     }
+
+    componentDidMount(){
+        const noteId = parseInt(this.props.noteId)
+        if (this.props.state.notes !== undefined){
+            const thisEditNote = this.props.state.notes.filter(note => {
+                return note.id === noteId
+            })
+            const {name, text, tags} = thisEditNote[0]
+               this.setState({
+                redirect: false,
+                name: name,
+                text: text,
+                tags: tags
+            })
+        }
+    }
   
     handleChange = (e) => {
         this.setState({
@@ -25,31 +41,32 @@ class EditForm extends React.Component{
     handleSubmit = e => {
         e.preventDefault();
         const formData = {
-            userId: this.props.id,
+            userId: this.props.state.id,
+            noteId: this.props.noteId,
             name: this.state.name,
             text: this.state.text,
             tags: this.state.tags
         }   
 
-    const reqObj = {
-        method: "PATCH",
-        headers: {      
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    }
+        const reqObj = {
+            method: "PATCH",
+            headers: {      
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }
   
-    fetch(`http://localhost:3000/notes/${this.props.noteId}`, reqObj)
-    .then(r=>r.json())
-    .then(user=> {
-      this.props.loginUsername({
-          id: user.id,
-          username: user.name,
-          notes: user.notes
-      })
-      this.setState({redirect: true})
-    })
-  }
+        fetch(`http://localhost:3000/notes/${this.props.noteId}`, reqObj)
+        .then(r=>r.json())
+        .then(user=> {
+            this.props.loginUsername({
+                id: user.id,
+                username: user.name,
+                notes: user.notes
+            })
+            this.setState({redirect: true})
+        })
+    }
   
   render(){
     if (this.state.redirect) {
@@ -97,7 +114,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    id: state.id
+    state: state
   }
 }
 
