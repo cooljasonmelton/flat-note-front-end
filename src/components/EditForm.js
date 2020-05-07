@@ -1,9 +1,11 @@
 import React from 'react';
 import { Input, TextArea, Button, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
+
+
  
-class NoteForm extends React.Component{
+class EditForm extends React.Component{
     constructor(){
       super()
       this.state = {
@@ -14,30 +16,30 @@ class NoteForm extends React.Component{
       }
     }
   
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-  
-  handleSubmit = e => {
-    e.preventDefault();
-    const formData = {
-      userId: this.props.id,
-      name: this.state.name,
-      text: this.state.text,
-      tags: this.state.tags
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
+  
+    handleSubmit = e => {
+        e.preventDefault();
+        const formData = {
+            userId: this.props.id,
+            name: this.state.name,
+            text: this.state.text,
+            tags: this.state.tags
+        }   
 
     const reqObj = {
-        method: "POST",
+        method: "PATCH",
         headers: {      
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
     }
   
-    fetch('http://localhost:3000/notes', reqObj)
+    fetch(`http://localhost:3000/notes/${this.props.noteId}`, reqObj)
     .then(r=>r.json())
     .then(user=> {
       this.props.loginUsername({
@@ -72,14 +74,14 @@ class NoteForm extends React.Component{
             value={this.state.text}
             onChange={this.handleChange}
             />
-            <Form.Field
+            {/* <Form.Field
             name="tags"
             control={Input}
             label='Tags (separate by comma):'
             placeholder='Tags'
             value={this.state.tags}
             onChange={this.handleChange}
-            />
+            /> */}
           <Button className="form-button" type='submit'> Save </Button>
         </Form>
       </div>
@@ -99,5 +101,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm);
+
 

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Dashboard from './components/Dashboard';
 import NoteFormContainer from './components/NoteFormContainer';
 import BigNoteContainer from './components/BigNoteContainer'
+import EditFormContainer from './components/EditFormContainer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/note/new" component={NoteFormContainer} />
+          <Route path="/note/edit/:noteId" render={(props) => <EditFormContainer {...props} /> } />
           <Route path="/note/:noteId" component={BigNoteContainer} />
         </Switch>
       </div>
@@ -23,6 +25,8 @@ function App() {
   );
 }
  
+
+
 export default App;
 
 

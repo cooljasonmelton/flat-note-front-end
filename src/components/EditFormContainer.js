@@ -3,19 +3,20 @@ import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import Note from './Note'
-import BigNote from './BigNote'
 import Navbar from './Navbar'
-import NoteForm from './NoteForm'
+import EditForm from './EditForm'
 
-class BigNoteContainer extends Component {
+class EditFormContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            activeItem: "", 
+            redirect: false,
+        }
+    }
   
-  state = { 
-    activeItem: "", 
-    redirect: false,
-  }
- 
   renderNotes = () => {
-    if (this.props.state.notes){
+    if (!!this.props.state.notes){
       return this.props.state.notes.map(note =>{
         return <Note note={note} 
         handleItemClick={this.handleItemClick} 
@@ -28,7 +29,6 @@ class BigNoteContainer extends Component {
   }
 
   handleItemClick = (e, { name }) => {
-    console.log(this.state)
     if (name === this.state.activeItem){
         this.setState({redirect: true});
     }
@@ -56,11 +56,11 @@ class BigNoteContainer extends Component {
             <Input placeholder='Search...' />
             </Menu.Item> */}
 
-          {this.renderNotes()}
+            {this.renderNotes()}
 
         </Menu>
+        <EditForm noteId={this.props.match.params.noteId}/>
 
-        <BigNote setActiveItem={this.setActiveItem}/>
       </div>
     </>
     )
@@ -79,5 +79,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BigNoteContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditFormContainer);
 

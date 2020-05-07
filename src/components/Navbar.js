@@ -45,6 +45,13 @@ class Navbar extends Component {
             onClick={this.handleLogOut}   
           />
 
+
+          <Menu.Item header as={NavLink} exact to="/note/edit/2" 
+            name='edit'
+            active={activeItem === 'edit'}
+            onClick={this.handleItemClick}   
+          />
+
         </Menu>
       </Segment>
     )

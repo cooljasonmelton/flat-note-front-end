@@ -15,11 +15,9 @@ const BigNote = (props) => {
     const noteData = props.state.filter(note => note.id === parseInt(bigNoteId))[0]
     const {id, name, text} = noteData
 
-    
- 
 
     const handleDelete = () => {
-      // fetch(`http://localhost:3000/notes/${bigNoteId}`, {method: "DELETE"})
+      
       const targetUrl = `http://localhost:3000/notes/${bigNoteId}`
 
       fetch(targetUrl, {method: "DELETE"})
@@ -33,6 +31,7 @@ const BigNote = (props) => {
       })
     }
 
+   
     return (
     <>
     <div id={`bignote-${id}`} className="big-note">
