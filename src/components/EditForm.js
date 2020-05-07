@@ -88,6 +88,7 @@ class EditForm extends React.Component{
             control={TextArea}
             label='Notes:'
             placeholder='Notes'
+            style={{overflow: "auto"}}
             value={this.state.text}
             onChange={this.handleChange}
             />
