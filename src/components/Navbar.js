@@ -15,8 +15,6 @@ class Navbar extends Component {
     return this.props.logout();
   }
 
-
-
   render() {
     const { activeItem } = this.state
 
@@ -29,7 +27,8 @@ class Navbar extends Component {
           />
 
 
-          <Menu.Item style={{   position: "absolute", left: "50%",  marginLeft: "-75px"}} className="title"
+          <Menu.Item style={{position: "absolute", left: "50%",  marginLeft: "-75px"}} 
+            className="title"
             name={`Hello ${this.props.username}`}
           />
 

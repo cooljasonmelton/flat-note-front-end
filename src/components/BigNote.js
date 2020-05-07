@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { useParams  } from 'react-router-dom';
+import { useParams, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const BigNote = (props) => {
@@ -12,31 +12,46 @@ const BigNote = (props) => {
     }
 
     props.setActiveItem(parseInt(bigNoteId))
-
     const noteData = props.state.filter(note => note.id === parseInt(bigNoteId))[0]
-
     const {id, name, text} = noteData
+
+    
+ 
+
+    const handleDelete = () => {
+      // fetch(`http://localhost:3000/notes/${bigNoteId}`, {method: "DELETE"})
+      const targetUrl = `http://localhost:3000/notes/${bigNoteId}`
+
+      fetch(targetUrl, {method: "DELETE"})
+      .then(r=>r.json())
+      .then(user=>{
+        props.loginUsername({
+          id: user.id,
+          username: user.name,
+          notes: user.notes
+        })
+      })
+    }
 
     return (
     <>
     <div id={`bignote-${id}`} className="big-note">
 
       <div className="flat-note-div"> 
-        <div className="edit-note">
-        <Button size='mini'>EDIT</Button>
-        <Button size='mini'>DELETE</Button>
-      </div>  
+
         <div className="note-display-name">
-            <h1>{name}</h1>
+            <h2>{name}</h2>
         </div>
         <div className="note-display-text">
             <p>{text}</p>
         </div>
-        <div className="note-tags">
-            <Button size='mini'>#tags</Button>
-            <Button size='mini'>#tags</Button>
-            <Button size='mini'>#tags</Button>
-        </div>
+        {/* <div className="note-tags">
+          <p>{tags}</p>
+        </div> */}
+        <div className="edit-note">
+          <Button size='mini'>EDIT</Button>
+          <Link to={`/dashboard`}><Button onClick={handleDelete} size='mini'>DELETE</Button></Link>
+        </div>  
       </div>
     </div>
     </>
@@ -44,9 +59,15 @@ const BigNote = (props) => {
 };
 
 const mapStateToProps = state => {
-    return {
-      state: state.notes
-    }
+  return {
+    state: state.notes
   }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUsername: formData => dispatch({ type: 'LOGIN_USERNAME', payload: formData })
+  };
+};
   
-export default connect(mapStateToProps)(BigNote);
+export default connect(mapStateToProps, mapDispatchToProps)(BigNote);

@@ -10,9 +10,10 @@ class NoteForm extends React.Component{
     constructor(){
       super()
       this.state = {
-          name: "",
-          text: "", 
-          tags: ""
+        redirect: false,  
+        name: "",
+        text: "", 
+        tags: ""
       }
     }
   
@@ -40,20 +41,23 @@ class NoteForm extends React.Component{
         },
         body: JSON.stringify(formData)
     }
-    console.log(formData)
   
     fetch('http://localhost:3000/notes', reqObj)
     .then(r=>r.json())
     .then(user=> {
-        this.props.loginUsername({
-            id: user.id,
-            username: user.name,
-            notes: user.notes
-        })
+      this.props.loginUsername({
+          id: user.id,
+          username: user.name,
+          notes: user.notes
+      })
+      this.setState({redirect: true})
     })
   }
   
   render(){
+    if (this.state.redirect) {
+      return <Redirect to="/dashboard" />   
+    }
     return (
       <div className="big-note">  
         <Form className="flat-note-div" onSubmit={this.handleSubmit}>
