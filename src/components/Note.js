@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Note = (props) => {
   const {id, name, text} = props.note
     return (
-      <Link to={`/note/${id}`}>
+      <Link to={`/note/prev/${id}`}>
         <Menu.Item 
         active={props.activeItem === id}
         onClick={props.handleItemClick}

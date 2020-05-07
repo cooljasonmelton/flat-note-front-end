@@ -17,8 +17,8 @@ function App() {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/note/new" component={NoteFormContainer} />
-          <Route path="/note/edit/:noteId" render={(props) => <EditFormContainer {...props} /> } />
-          <Route path="/note/:noteId" component={BigNoteContainer} />
+          <Route path="/note/prev/:noteId" component={BigNoteContainer} /> } />
+          <Route path="/note/:noteId" render={(props) => <EditFormContainer {...props} /> } />
         </Switch>
       </div>
     </Router>

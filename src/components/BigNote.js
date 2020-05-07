@@ -48,7 +48,7 @@ const BigNote = (props) => {
           <p>{tags}</p>
         </div> */}
         <div className="edit-note">
-          <Link to={`/note/edit/${id}`}><Button size='mini'>EDIT</Button></Link>
+          <Link to={`/note/${id}`}><Button size='mini'>EDIT</Button></Link>
           <Link to={`/dashboard`}><Button onClick={handleDelete} size='mini'>DELETE</Button></Link>
         </div>  
       </div>
