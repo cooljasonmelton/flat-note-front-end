@@ -28,7 +28,6 @@ class BigNoteContainer extends Component {
   }
 
   handleItemClick = (e, { name }) => {
-    console.log(this.state)
     if (name === this.state.activeItem){
         this.setState({redirect: true});
     }

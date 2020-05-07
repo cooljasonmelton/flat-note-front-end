@@ -40,7 +40,7 @@ class NoteContainer extends Component {
     if (this.state.activeItem !== ""){
       return this.props.state.notes.map(note => {
         if (note.id === this.state.activeItem){
-          return <NoteDisplay note={note} />
+          return <NoteDisplay key={note.id} note={note} />
         }
       })
     }
