@@ -10,13 +10,12 @@ import NoteForm from './NoteForm'
 class BigNoteContainer extends Component {
   
   state = { 
-    activeItem: 2, 
+    activeItem: "", 
     redirect: false,
-    renderNoteForm: false
   }
  
   renderNotes = () => {
-    if (!!this.props.state.notes){
+    if (this.props.state.notes){
       return this.props.state.notes.map(note =>{
         return <Note note={note} 
         handleItemClick={this.handleItemClick} 
@@ -28,7 +27,7 @@ class BigNoteContainer extends Component {
     }
   }
 
-  handleItemClick = (e, { name }) => {
+  handleItemClick = ({ name }) => {
     if (name === this.state.activeItem){
         this.setState({redirect: true});
     }
@@ -56,13 +55,11 @@ class BigNoteContainer extends Component {
             <Input placeholder='Search...' />
             </Menu.Item> */}
 
-            {this.renderNotes()}
+          {this.renderNotes()}
 
         </Menu>
 
         <BigNote setActiveItem={this.setActiveItem}/>
-
-
       </div>
     </>
     )

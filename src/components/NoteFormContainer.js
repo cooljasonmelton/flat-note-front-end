@@ -3,16 +3,14 @@ import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import Note from './Note'
-import BigNote from './BigNote'
 import Navbar from './Navbar'
 import NoteForm from './NoteForm'
 
 class NoteFormContainer extends Component {
   
   state = { 
-    activeItem: 2, 
+    activeItem: "", 
     redirect: false,
-    renderNoteForm: false
   }
  
   renderNotes = () => {
