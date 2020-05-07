@@ -26,7 +26,6 @@ class Navbar extends Component {
             name="flat note"
           />
 
-
           <Menu.Item style={{position: "absolute", left: "50%",  marginLeft: "-75px"}} 
             className="title"
             name={`Hello ${this.props.username}`}
@@ -44,7 +43,6 @@ class Navbar extends Component {
             active={activeItem === 'sign out'}
             onClick={this.handleLogOut}   
           />
-
         </Menu>
       </Segment>
     )

@@ -35,8 +35,6 @@ class Login extends Component {
                 notes: user.notes
             })
         })
-
-
     }
 
     render() {

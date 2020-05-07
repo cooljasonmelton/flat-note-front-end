@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
 import Note from './Note'
-import NoteDisplay from './NoteDisplay';
-import BigNote from './BigNote'
-
 
 class NoteContainer extends Component {
   constructor(){
@@ -21,6 +17,7 @@ class NoteContainer extends Component {
         return <Note note={note} 
         handleItemClick={this.handleItemClick} 
         activeItem={this.state.activeItem}
+        key={note.id}
         />
       })
     } else {
@@ -36,15 +33,6 @@ class NoteContainer extends Component {
     return this.setState({ activeItem: name })
   }
 
-  displayNote = () => {  
-    if (this.state.activeItem !== ""){
-      return this.props.state.notes.map(note => {
-        if (note.id === this.state.activeItem){
-          return <NoteDisplay key={note.id} note={note} />
-        }
-      })
-    }
-  }
 
   render() {
     return (

@@ -76,29 +76,29 @@ class EditForm extends React.Component{
       <div className="big-note">  
         <Form className="flat-note-div" onSubmit={this.handleSubmit}>
             <Form.Field
-            name="name"
-            control={Input}
-            label='Title:'
-            placeholder='Title'
-            value={this.state.name}
-            onChange={this.handleChange}
+              name="name"
+              control={Input}
+              label='Title:'
+              placeholder='Title'
+              value={this.state.name}
+              onChange={this.handleChange}
             />
             <Form.Field
-            name="text"
-            control={TextArea}
-            label='Notes:'
-            placeholder='Notes'
-            style={{overflow: "auto"}}
-            value={this.state.text}
-            onChange={this.handleChange}
+              name="text"
+              control={TextArea}
+              label='Notes:'
+              placeholder='Notes'
+              style={{height: "300px"}}
+              value={this.state.text}
+              onChange={this.handleChange}
             />
             {/* <Form.Field
-            name="tags"
-            control={Input}
-            label='Tags (separate by comma):'
-            placeholder='Tags'
-            value={this.state.tags}
-            onChange={this.handleChange}
+              name="tags"
+              control={Input}
+              label='Tags (separate by comma):'
+              placeholder='Tags'
+              value={this.state.tags}
+              onChange={this.handleChange}
             /> */}
           <Button className="form-button" type='submit'> Save </Button>
         </Form>
