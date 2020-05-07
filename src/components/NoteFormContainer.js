@@ -7,7 +7,7 @@ import BigNote from './BigNote'
 import Navbar from './Navbar'
 import NoteForm from './NoteForm'
 
-class BigNoteContainer extends Component {
+class NoteFormContainer extends Component {
   
   state = { 
     activeItem: 2, 
@@ -60,7 +60,7 @@ class BigNoteContainer extends Component {
 
         </Menu>
 
-        <BigNote setActiveItem={this.setActiveItem}/>
+        <NoteForm/>
 
 
       </div>
@@ -81,5 +81,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BigNoteContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(NoteFormContainer);
 
