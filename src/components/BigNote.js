@@ -8,13 +8,12 @@ const BigNote = (props) => {
     const bigNoteId = useParams().noteId 
 
     if (props.state === undefined) {
-        return <div>note not found</div>
+      return <div>note not found</div>
     }
 
     props.setActiveItem(parseInt(bigNoteId))
     const noteData = props.state.filter(note => note.id === parseInt(bigNoteId))[0]
     const {id, name, text} = noteData
-
 
     const handleDelete = () => {
       
@@ -32,8 +31,7 @@ const BigNote = (props) => {
     }
 
    
-    return (
-    <>
+  return ( 
     <div id={`bignote-${id}`} className="big-note">
 
       <div className="flat-note-div"> 
@@ -53,8 +51,7 @@ const BigNote = (props) => {
         </div>  
       </div>
     </div>
-    </>
-    );
+  );
 };
 
 const mapStateToProps = state => {
