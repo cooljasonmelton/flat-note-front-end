@@ -36,7 +36,7 @@ Y
 ```
 5. Navigate browser to window opened by npm, by default: <a href='http://localhost:3001/'> http://localhost:3001/ </a> 
 
-## Authors
+## Author
 * <a href='https://github.com/cooljasonmelton'> Jason Melton</a>
 
 ## Acknowledgments
