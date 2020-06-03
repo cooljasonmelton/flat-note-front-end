@@ -76,10 +76,10 @@ class EditForm extends React.Component{
       <div className="big-note">  
         <Form className="flat-note-div" onSubmit={this.handleSubmit}>
             <Form.Field
-              name="name"
               control={Input}
               label='Title:'
               placeholder='Title'
+              name="name"
               value={this.state.name}
               onChange={this.handleChange}
             />

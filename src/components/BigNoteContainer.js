@@ -5,9 +5,6 @@ import { Redirect } from "react-router-dom";
 import Note from './Note'
 import BigNote from './BigNote'
 import Navbar from './Navbar'
-import NoteContainer from './NoteContainer'
-
-
 
 class BigNoteContainer extends Component {
   
@@ -47,21 +44,16 @@ class BigNoteContainer extends Component {
     return (
     <>
       <Navbar/>
-      
       <div className="note-container">
         <Menu vertical style={{overflow: 'auto', height: '500px', maxHeight: '500px' }}>            
             <Menu.Item style={{backgroundColor: "#000000", color: "white"}}>
             NOTES:
             </Menu.Item>
-            
             {/* <Menu.Item>
             <Input placeholder='Search...' />
             </Menu.Item> */}
-
           {this.renderNotes()}
-
         </Menu>
-
         <BigNote setActiveItem={this.setActiveItem}/>
       </div>
     </>
