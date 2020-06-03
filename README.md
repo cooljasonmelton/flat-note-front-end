@@ -13,20 +13,20 @@
 * Semantic UI
 ​
 ## Installation Instructions
-1. Cd into preferred directory and clone repo for front-end and back-end.
+1. Cd into preferred directory and clone repo for front-end and back-end:
 ```bash
 git clone git@github.com:cooljasonmelton/flat-note-front-end.git
 git clone git@github.com:cooljasonmelton/flat-note-back-end.git
 ```
-2. Cd into directory 'flat-note-back-end' repo directory and migrate database
+2. Cd into directory 'flat-note-back-end' repo directory and migrate database:
 ```bash
 rails db:migrate
 ```
-3. Start a rails server
+3. Start a rails server:
 ```bash
 rails server
 ```
-4. Open a new terminal tab. Cd into 'flat-note-front-end'. install and run npm 
+4. Open a new terminal tab. Cd into 'flat-note-front-end'. Install and run npm:
 ```bash
 npm install && npm start
 ```
