@@ -30,7 +30,10 @@ rails server
 ```bash
 npm install && npm start
 ```
-When prompted, run npm in a new port by entering 'Y'.
+When prompted, run npm in a new port:
+```bash
+Y
+```
 5. Navigate browser to window opened by npm, by default: <a href='http://localhost:3001/'> http://localhost:3001/ </a> 
 
 ## Authors
