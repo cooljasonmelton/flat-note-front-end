@@ -12,7 +12,7 @@
 ## Built With​
 * React.js
 * Ruby on Rails RESTful API
-* Redux and BrowserRouter
+* Redux and React Router
 * Semantic UI
 ​
 ## Installation Instructions
